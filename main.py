@@ -1,3 +1,4 @@
+# Version 1
 from PyQt5.uic import loadUi
 from PyQt5 import QtGui, QtCore
 from matplotlib.backends.backend_qt5agg import (NavigationToolbar2QT as NavigationToolbar)
