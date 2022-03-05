@@ -21,7 +21,7 @@ class OglWidget(QGLWidget):
         self.pitch = 0
         self.yaw = 0
         self.quaternion = [0, 0, 0, 0]
-        self.state = "euler"
+        self.state = "quaternion"
 
     def initializeGL(self):
         glViewport(0, 0, self.minX, self.minY)

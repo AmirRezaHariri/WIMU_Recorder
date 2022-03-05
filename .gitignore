@@ -133,3 +133,6 @@ dmypy.json
 
 # Temp STL Files
 *.STL
+
+settings
+*.csv

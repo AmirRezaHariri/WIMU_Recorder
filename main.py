@@ -1,4 +1,5 @@
-# Version 1
+# Version 1.0.0
+
 from PyQt5.uic import loadUi
 from PyQt5 import QtGui, QtCore
 from matplotlib.backends.backend_qt5agg import (NavigationToolbar2QT as NavigationToolbar)
@@ -68,7 +69,7 @@ class OnlinePage(QMainWindow):
         self.yLim = [(-2, 2), (-450, 450), (-50, 50)]
         self.plotSkip = 3
         self.modelUpdateTime = 20  # ms
-        self.calibDUration = 10  # s
+        self.calibDUration = 1  # s
         self.port = 8888
         self.ips = [self.ip1, self.ip2, self.ip3]
         self.imuIcons = [self.imu1icn, self.imu2icn, self.imu3icn]
@@ -216,20 +217,20 @@ class OnlinePage(QMainWindow):
                                                          self.calibData[state][3][2][i]])[:3]])
 
         # test frame calibration data
-        with open(r'calib' + r'.csv', "w+", newline='') as f:
-            writer = csv.writer(f)
-            temp = ["Time"]
-            for p in self.axName:
-                temp.append(p + "_X")
-                temp.append(p + "_Y")
-                temp.append(p + "_Z")
-            writer.writerow(temp)
-            for k in range(0, len(self.calibData[state][0])):
-                temp = [self.calibData[state][0][k], self.calibData[state][1][0][k], self.calibData[state][1][1][k],
-                        self.calibData[state][1][2][k], self.calibData[state][2][0][k], self.calibData[state][2][1][k],
-                        self.calibData[state][2][2][k], self.calibData[state][3][0][k], self.calibData[state][3][1][k],
-                        self.calibData[state][3][2][k]]
-                writer.writerow(temp)
+        # with open(r'calib' + r'.csv', "w+", newline='') as f:
+        #     writer = csv.writer(f)
+        #     temp = ["Time"]
+        #     for p in self.axName:
+        #         temp.append(p + "_X")
+        #         temp.append(p + "_Y")
+        #         temp.append(p + "_Z")
+        #     writer.writerow(temp)
+        #     for k in range(0, len(self.calibData[state][0])):
+        #         temp = [self.calibData[state][0][k], self.calibData[state][1][0][k], self.calibData[state][1][1][k],
+        #                 self.calibData[state][1][2][k], self.calibData[state][2][0][k], self.calibData[state][2][1][k],
+        #                 self.calibData[state][2][2][k], self.calibData[state][3][0][k], self.calibData[state][3][1][k],
+        #                 self.calibData[state][3][2][k]]
+        #         writer.writerow(temp)
 
         alpha = np.mean([c[0] for c in ang])
         beta = np.mean([c[1] for c in ang])
